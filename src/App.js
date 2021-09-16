@@ -100,17 +100,22 @@ var emojiDictionary = {
 
 var emojiInDictionary = Object.keys(emojiDictionary);
 export default function App() {
-  var [meaning, setUserInputMeaning] = useState("");
+  var [userEmoji, setUserEomoji] = useState("");
+  var [meaning, setMeaning] = useState("translation will appear here..");
+
   function userInputChangeHandler(event) {
     var userInputEmoji = event.target.value;
-    var meaning = emojiDictionary[userInputEmoji];
+    setUserEomoji(userInputEmoji);
 
-    setUserInputMeaning(meaning);
+    if (userInputEmoji in emojiDictionary) {
+      setMeaning(emojiDictionary[userInputEmoji]);
+    } else {
+      setMeaning("failure to recognise this emoji");
+    }
   }
 
-  function emojiClickHandler(emoji) {
-    var meaning = emojiDictionary[emoji];
-    setUserInputMeaning(meaning);
+  function emojiClickHandler(userInputEmoji) {
+    setMeaning(emojiDictionary[userInputEmoji]);
   }
   return (
     <div className="App">
