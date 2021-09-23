@@ -100,7 +100,7 @@ var emojiDictionary = {
 
 var emojiInDictionary = Object.keys(emojiDictionary);
 export default function App() {
-  var [userEmoji, setUserEomoji] = useState("");
+  var [emoji, setUserEomoji] = useState("");
   var [meaning, setMeaning] = useState("translation will appear here..");
 
   function userInputChangeHandler(event) {
